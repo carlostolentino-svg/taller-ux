@@ -1,57 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscripción al taller</title>
-  <link rel="stylesheet" href="estilos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Notas Accesible</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="tarjeta">
-    <img src="img/banner.png.jpg" alt="Estudiantes programando en el laboratorio">
-    <h1>Inscríbete al taller</h1>
-    <p class="ayuda">Completa tus datos. Todos los campos son obligatorios.</p>
- 
-    <form id="formulario" novalidate>
-      <fieldset>
-        <legend>1. Tus datos</legend>
-        <label for="nombre">Nombre completo</label>
-        <input id="nombre" type="text" autocomplete="name" required>
- 
-        <label for="correo">Correo electrónico</label>
-        <input id="correo" type="email" autocomplete="email"
-               placeholder="nombre@tecsup.edu.pe" required>
- 
-        <label for="telefono">Celular</label>
-        <input id="telefono" type="tel" placeholder="999 888 777" required>
-      </fieldset>
- 
-      <fieldset>
-        <legend>2. Tu taller</legend>
-        <label for="taller">Elige un taller</label>
-        <select id="taller" required>
-          <option value="">Selecciona una opción</option>
-          <optgroup label="Control de versiones">
-            <option>Git</option> <option>GitHub</option> <option>Markdown</option>
-          </optgroup>
-          <optgroup label="Desarrollo web">
-            <option>HTML</option> <option>CSS</option> <option>JavaScript</option>
-            <option>React</option> <option>Node.js</option> <option>APIs</option>
-          </optgroup>
-          <optgroup label="Diseño y calidad">
-            <option>Figma</option> <option>Accesibilidad</option> <option>Testing</option>
-          </optgroup>
-        </select>
-      </fieldset>
- 
-      <p id="mensaje" class="mensaje" role="status"></p>
- 
-      <div class="acciones">
-        <button type="submit" class="boton-principal">Inscribirme</button>
-        <button type="reset" class="boton-secundario">Limpiar formulario</button>
-      </div>
-    </form>
-  </main>
-  <script src="app.js"></script>
+
+    <header>
+        <!-- Un solo h1 principal solicitado en la guía -->
+        <h1>Mis Notas Personales</h1>
+    </header>
+
+    <main>
+        <!-- Formulario para agregar notas -->
+        <section class="form-section">
+            <form id="note-form">
+                <div class="form-group">
+                    <label id="label-textarea" for="note-text">Escribe el contenido de tu nota:</label>
+                    <textarea 
+                        id="note-text" 
+                        placeholder="Ej. Comprar ingredientes para la cena..." 
+                        aria-labelledby="label-textarea"
+                        required></textarea>
+                </div>
+                <!-- El botón inicia deshabilitado para prevenir notas vacías -->
+                <button type="submit" id="submit-btn" disabled>Guardar Nota</button>
+            </form>
+        </section>
+
+        <!-- Contenedor de notificaciones / Feedback para el usuario -->
+        <div id="toast-container" aria-live="polite" role="status"></div>
+
+        <!-- Listado de notas -->
+        <section class="notes-section">
+            <h2>Tus Notas</h2>
+            <ul id="notes-list">
+                <!-- Las notas se generarán dinámicamente aquí -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
 </body>
 </html>
